@@ -1,0 +1,8 @@
+Django==2.2.6
+django-colorfield==0.1.15
+django-cors-headers==3.1.1
+django-filter==2.2.0
+djangorestframework==3.10.3
+psycopg2==2.8.3
+pytz==2019.3
+sqlparse==0.3.0
