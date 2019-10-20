@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'contas',
     'rest_framework',
     'colorfield',
+    'django_filters',
 ]
 
 MIDDLEWARE = [
@@ -77,6 +78,11 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'contas_a_pagar.wsgi.application'
 
+REST_FRAMEWORK = {
+    'DEFAULT_FILTER_BACKENDS': (
+        'django_filters.rest_framework.DjangoFilterBackend',
+    ),
+}
 
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases

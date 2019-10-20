@@ -21,7 +21,7 @@ from contas.views import CentroLucroViewset
 
 
 router = routers.DefaultRouter()
-router.register(r'centro_lucro', CentroLucroViewset)
+router.register(r'api/centro-lucro', CentroLucroViewset)
 
 
 urlpatterns = [
