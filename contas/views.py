@@ -1,11 +1,10 @@
 from django.shortcuts import render
 from rest_framework import viewsets
 
-from contas.filters import CentroLucroFilter
-from contas.models import CentroLucro
-from contas.serializers import CentroLucroSerializer
+from contas.filters import CentroLucroFilter, CentroCustoFilter
+from contas.models import CentroLucro, CentroCusto
+from contas.serializers import CentroLucroSerializer, CentroCustoSerializer
 from django_filters import rest_framework as filters
-
 
 
 class CentroLucroViewset(viewsets.ModelViewSet):
@@ -13,5 +12,10 @@ class CentroLucroViewset(viewsets.ModelViewSet):
     serializer_class = CentroLucroSerializer
     filter_backends = (filters.DjangoFilterBackend,)
     filterset_class = CentroLucroFilter
-# pq ta vindo os paramketros como 0 1 2 3
-#
+
+
+class CentroCustoViewset(viewsets.ModelViewSet):
+    queryset = CentroCusto.objects.all()
+    serializer_class = CentroCustoSerializer
+    filter_backends = (filters.DjangoFilterBackend,)
+    filterset_class = CentroCustoFilter
