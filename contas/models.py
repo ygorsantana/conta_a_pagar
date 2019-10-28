@@ -82,9 +82,16 @@ class ContaPagar(models.Model):
         null=True,
     )
     data_cadastro = models.DateTimeField(
-        default=datetime.datetime.now(),
-        null=False,
+        auto_now_add=True,
     )
+
+    @property
+    def atrasado(self):
+        if self.data_pagamento > self.data_vencimento:
+            return True
+        if datetime.datetime.now() > self.data_vencimento.replace(tzinfo=None):
+            return True
+        return False
 
 
 class ContaReceber(models.Model):
@@ -108,18 +115,26 @@ class ContaReceber(models.Model):
         null=False,
     )
     previsao_recebimento = models.DateTimeField(
-        null=True,
+        null=False,
     )
     observacao = models.TextField(
         null=True,
     )
     recebido = models.BooleanField(
-        null=False,
+        default=False,
     )
     data_recebimento = models.DateTimeField(
         null=True,
     )
     data_cadastro = models.DateTimeField(
-        default=datetime.datetime.now(),
-        null=False,
+        auto_now_add=True,
     )
+
+    @property
+    def atrasado(self):
+        if self.data_recebimento:
+            if self.data_recebimento > self.previsao_recebimento:
+                return True
+        if datetime.datetime.now() > self.previsao_recebimento.replace(tzinfo=None):
+            return True
+        return False

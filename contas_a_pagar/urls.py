@@ -17,11 +17,13 @@ from django.contrib import admin
 from django.urls import path
 from rest_framework import routers
 
-from contas.views import CentroLucroViewset, CentroCustoViewset
+from contas.views import CentroLucroViewset, CentroCustoViewset, ContaReceberViewset, ContaPagarViewset
 
 router = routers.DefaultRouter()
 router.register(r'api/centro-lucro', CentroLucroViewset)
 router.register(r'api/centro-custo', CentroCustoViewset)
+router.register(r'api/conta-receber', ContaReceberViewset)
+router.register(r'api/conta-pagar', ContaPagarViewset)
 
 
 urlpatterns = [
