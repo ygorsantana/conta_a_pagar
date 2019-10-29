@@ -73,7 +73,7 @@ class ContaPagar(models.Model):
         null=True,
     )
     pago = models.BooleanField(
-        null=False,
+        null=True,
     )
     data_pagamento = models.DateTimeField(
         null=True,
@@ -87,7 +87,7 @@ class ContaPagar(models.Model):
 
     @property
     def atrasado(self):
-        if self.data_pagamento > self.data_vencimento:
+        if self.data_pagamento and self.data_pagamento > self.data_vencimento:
             return True
         if datetime.datetime.now() > self.data_vencimento.replace(tzinfo=None):
             return True
@@ -132,9 +132,8 @@ class ContaReceber(models.Model):
 
     @property
     def atrasado(self):
-        if self.data_recebimento:
-            if self.data_recebimento > self.previsao_recebimento:
-                return True
+        if self.data_recebimento and self.data_recebimento > self.previsao_recebimento:
+            return True
         if datetime.datetime.now() > self.previsao_recebimento.replace(tzinfo=None):
             return True
         return False
