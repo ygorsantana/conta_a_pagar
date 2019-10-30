@@ -32,6 +32,7 @@ class ContaReceberSerializer(serializers.ModelSerializer):
             'data_cadastro',
             'atrasado',
         ]
+        depth = 1
 
 
 class ContaPagarSerializer(serializers.ModelSerializer):
@@ -51,3 +52,5 @@ class ContaPagarSerializer(serializers.ModelSerializer):
             'data_cadastro',
             'atrasado',
         ]
+        depth = 1
+
